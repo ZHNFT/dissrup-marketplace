@@ -10,6 +10,8 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
 
 import {DirectSale} from "./DirectSale.sol";
 
+import {AuctionSale} from "./AuctionSale.sol";
+
 import {Core} from "./Core.sol";
 
 error Only_Admin_Can_Access();
@@ -19,7 +21,12 @@ enum TokenStandard {
     ERC1155
 }
 
-contract Marketplace is Initializable, DirectSale, AccessControlUpgradeable {
+contract Marketplace is
+    Initializable,
+    DirectSale,
+    AuctionSale,
+    AccessControlUpgradeable
+{
     event RegisterContract(
         address contractAddress,
         TokenStandard tokenStandard
